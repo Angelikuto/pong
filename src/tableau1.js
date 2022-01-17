@@ -49,6 +49,11 @@ class Tableau1 extends Phaser.Scene{
 
     }
 
+    rebond(raquette){
+        console.log(raquette.y);
+        console.log(raquette.y)
+    }
+
     initKeyboard(){
         let me=this;
         this.input.keyboard.on('keydown', function(kevent)

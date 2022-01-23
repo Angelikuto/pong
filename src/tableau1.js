@@ -1,8 +1,9 @@
 class Tableau1 extends Phaser.Scene {
 
     preload() {
-        this.load.image('balle','assets/cercle.png');
-        this.load.image('carre','assets/carre.png');
+        this.load.image('balle','assets/pokeball.png');
+        this.load.image('carreG','assets/sacha.png');
+        this.load.image('carreD','assets/chen.png');
     }
 
     create() {
@@ -11,7 +12,6 @@ class Tableau1 extends Phaser.Scene {
         this.hauteur1 = 100
         this.largeur1 = 20
 
-        this.container=this.add.container(0,0);
 
 
 
@@ -42,14 +42,14 @@ class Tableau1 extends Phaser.Scene {
 
         //raquette gauche
 
-        this.gauche=this.physics.add.image(this.largeur1,this.hauteur1*2,'carre').setOrigin(0,0);
+        this.gauche=this.physics.add.image(this.largeur1,this.hauteur1*2,'carreG').setOrigin(0,0);
         this.gauche.setDisplaySize(this.largeur1,this.hauteur1);
         this.gauche.body.setAllowGravity(false);
         this.gauche.setImmovable(true);
 
         //raquette de droite
 
-        this.droite=this.physics.add.image(960,this.hauteur1*2,'carre').setOrigin(0,0);
+        this.droite=this.physics.add.image(960,this.hauteur1*2,'carreD').setOrigin(0,0);
         this.droite.setDisplaySize(this.largeur1,this.hauteur1);
         this.droite.body.setAllowGravity(false);
         this.droite.setImmovable(true);

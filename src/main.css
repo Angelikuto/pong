@@ -2,6 +2,8 @@ body{
     font-family: Arial, sans-serif;
     font-size: 12px;
     background-color: #000000;
+    background-image: url(https://www.pngmart.com/files/13/Pokemon-Card-PNG-File.png);
+    background-size: cover;
     text-align: center;
 }
 a{

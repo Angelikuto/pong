@@ -50,11 +50,12 @@ class Tableau1 extends Phaser.Scene{
         this.balle.body.setAllowGravity(false)
 
         this.haut = this.physics.add.sprite(0, 0, 'banniere').setOrigin(0, 0)
-        this.haut.setDisplaySize(this.largeur, 20)
+        this.haut.setDisplaySize(this.largeur, 30)
+
         this.haut.body.setAllowGravity(false)
         this.haut.setImmovable(true);
-        this.bas = this.physics.add.sprite(0, 480, 'banniere').setOrigin(0, 0)
-        this.bas.setDisplaySize(this.largeur, 20)
+        this.bas = this.physics.add.sprite(0, 480, 'banniere').setOrigin(0, 1)
+        this.bas.setDisplaySize(this.largeur, 30)
         this.bas.body.setAllowGravity(false)
         this.bas.setImmovable(true);
         this.player1 = this.physics.add.sprite(50, 360, 'sacha')
@@ -89,8 +90,8 @@ class Tableau1 extends Phaser.Scene{
         this.player1Speed = 0
         this.player2Speed = 0
 
-        this.joueurGauche = new Joueur('Robert','joueurGauche')
-        this.joueurDroite = new Joueur('Jean marie','joueurDroite')
+        this.joueurGauche = new Joueur('Sacha','joueurGauche')
+        this.joueurDroite = new Joueur('Pr.Chen','joueurDroite')
         console.log(this.joueurGauche)
 
         this.balleAucentre();

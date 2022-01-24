@@ -1,7 +1,7 @@
 body{
     font-family: Arial, sans-serif;
     font-size: 12px;
-    background-color: #93f1c0;
+    background-color: #000000;
     text-align: center;
 }
 a{
@@ -27,4 +27,25 @@ a:visited{
 }
 canvas{
     outline: 1px solid #333;
+}
+
+#scores{
+    color: #ffffff;
+    font-size : 5vw;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.score{
+    color:#0f0
+}
+.name{
+    font-size: 3vw;
+}
+
+#scores >* {
+    margin: 1vw;
 }

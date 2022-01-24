@@ -6,7 +6,8 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('sacha','assets/sacha.png');
         this.load.image('chen','assets/chen.png');
         this.load.image('circle','assets/pokeball.png');
-        this.load.image('arene','assets/arene.png');
+        this.load.image('arene','assets/arene.jpg');
+        this.load.image('banniere','assets/banniere.png');
 
         //for(let j=1;j<=49;j++) {
         //    this.load.image('arene' + j, 'assets/fond/frame-' + j + '.jpg');
@@ -25,7 +26,8 @@ class Tableau1 extends Phaser.Scene{
         //this.foond =this.add.image(500,250,'fond');
         //this.foond.setDisplaySize(1000,550)
 
-        this.arene = this.add.sprite(500, 250, 'arene').setOrigin(0,0);
+        this.arene = this.add.sprite(0, 0, 'arene').setOrigin(0,0);
+        this.arene.setScale(0.8,0.4)
         //this.anims.create({
         //    key: 'backg',
         //    frames: this.getFrames('backg',49),
@@ -47,11 +49,11 @@ class Tableau1 extends Phaser.Scene{
         this.balle.body.setBounce(1,1);
         this.balle.body.setAllowGravity(false)
 
-        this.haut = this.physics.add.sprite(0, 0, 'sacha').setOrigin(0, 0)
+        this.haut = this.physics.add.sprite(0, 0, 'banniere').setOrigin(0, 0)
         this.haut.setDisplaySize(this.largeur, 20)
         this.haut.body.setAllowGravity(false)
         this.haut.setImmovable(true);
-        this.bas = this.physics.add.sprite(0, 480, 'chen').setOrigin(0, 0)
+        this.bas = this.physics.add.sprite(0, 480, 'banniere').setOrigin(0, 0)
         this.bas.setDisplaySize(this.largeur, 20)
         this.bas.body.setAllowGravity(false)
         this.bas.setImmovable(true);
@@ -145,32 +147,32 @@ class Tableau1 extends Phaser.Scene{
         let me = this
         this.input.keyboard.on('keydown', function (kevent) {
             switch (kevent.keyCode) {
-                case Phaser.Input.Keyboard.KeyCodes.S:
+                case Phaser.Input.Keyboard.KeyCodes.Z:
                     me.player1Speed = -5
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.X:
+                case Phaser.Input.Keyboard.KeyCodes.S:
                     me.player1Speed = 5
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.J:
+                case Phaser.Input.Keyboard.KeyCodes.UP:
                     me.player2Speed = -5
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.N:
+                case Phaser.Input.Keyboard.KeyCodes.DOWN:
                     me.player2Speed = 5
                     break;
             }
         });
         this.input.keyboard.on('keyup', function (kevent) {
             switch (kevent.keyCode) {
+                case Phaser.Input.Keyboard.KeyCodes.Z:
+                    me.player1Speed = 0
+                    break;
                 case Phaser.Input.Keyboard.KeyCodes.S:
                     me.player1Speed = 0
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.X:
-                    me.player1Speed = 0
-                    break;
-                case Phaser.Input.Keyboard.KeyCodes.J:
+                case Phaser.Input.Keyboard.KeyCodes.UP:
                     me.player2Speed = 0
                     break;
-                case Phaser.Input.Keyboard.KeyCodes.N:
+                case Phaser.Input.Keyboard.KeyCodes.DOWN:
                     me.player2Speed = 0
                     break;
             }

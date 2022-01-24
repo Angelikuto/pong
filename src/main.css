@@ -3,7 +3,7 @@ body{
     font-size: 12px;
     background-color: #000000;
     background-image: url(https://www.pngmart.com/files/13/Pokemon-Card-PNG-File.png);
-    background-size: cover;
+    background-size: center;
     text-align: center;
 }
 a{

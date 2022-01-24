@@ -8,6 +8,8 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('circle','assets/pokeball.png');
         this.load.image('arene','assets/arene.jpg');
         this.load.image('banniere','assets/pokeballs.png');
+        this.load.image('smoke','assets/smoke.png');
+
 
         //for(let j=1;j<=49;j++) {
         //    this.load.image('arene' + j, 'assets/fond/frame-' + j + '.jpg');
@@ -22,12 +24,12 @@ class Tableau1 extends Phaser.Scene{
         return frames;
     }
 
-    create(){
+    create() {
         //this.foond =this.add.image(500,250,'fond');
         //this.foond.setDisplaySize(1000,550)
 
-        this.arene = this.add.sprite(0, 0, 'arene').setOrigin(0,0);
-        this.arene.setScale(0.8,0.4)
+        this.arene = this.add.sprite(0, 0, 'arene').setOrigin(0, 0);
+        this.arene.setScale(0.8, 0.4)
         //this.anims.create({
         //    key: 'backg',
         //    frames: this.getFrames('backg',49),
@@ -35,18 +37,19 @@ class Tableau1 extends Phaser.Scene{
         //    repeat: -1
         //});
 
+
         this.hauteur = 500
         this.largeur = 1000
         this.speedX = 0
-        while(this.speedX===0){
-            this.speedX = 500*Phaser.Math.Between(-1,1)
+        while (this.speedX === 0) {
+            this.speedX = 500 * Phaser.Math.Between(-1, 1)
         }
         this.speedY = Phaser.Math.Between(-500, 500)
         this.maxspeed = 500
 
-        this.balle = this.physics.add.sprite(this.largeur/2, this.hauteur/2, 'circle')
+        this.balle = this.physics.add.sprite(this.largeur / 2, this.hauteur / 2, 'circle')
         this.balle.setDisplaySize(20, 20)
-        this.balle.body.setBounce(1,1);
+        this.balle.body.setBounce(1, 1);
         this.balle.body.setAllowGravity(false)
 
         this.haut = this.physics.add.sprite(0, 0, 'banniere').setOrigin(0, 0)
@@ -59,19 +62,19 @@ class Tableau1 extends Phaser.Scene{
         this.bas.body.setAllowGravity(false)
         this.bas.setImmovable(true);
         this.player1 = this.physics.add.sprite(50, 360, 'sacha')
-        this.player1.setDisplaySize(50, 100)
+        this.player1.setDisplaySize(80, 100)
         this.player1.body.setAllowGravity(false)
         this.player2 = this.physics.add.sprite(920, 360, 'chen')
-        this.player2.setDisplaySize(50, 100)
+        this.player2.setDisplaySize(70, 110)
         this.player2.body.setAllowGravity(false)
         this.player1.setImmovable(true)
         this.player2.setImmovable(true)
         let me = this;
-        this.physics.add.collider(this.player1, this.balle,function(){
+        this.physics.add.collider(this.player1, this.balle, function () {
             console.log('touche player 1')
             me.rebond(me.player1)
         })
-        this.physics.add.collider(this.player2, this.balle,function(){
+        this.physics.add.collider(this.player2, this.balle, function () {
             console.log('touche player 2')
             me.rebond(me.player2)
         })
@@ -79,7 +82,7 @@ class Tableau1 extends Phaser.Scene{
         this.physics.add.collider(this.balle, this.bas)
         this.physics.add.collider(this.balle, this.haut)
 
-        this.balle.setMaxVelocity(this.maxspeed,this.maxspeed)
+        this.balle.setMaxVelocity(this.maxspeed, this.maxspeed)
 
         this.physics.add.collider(this.haut, this.player1)
         this.physics.add.collider(this.bas, this.player1)
@@ -90,9 +93,29 @@ class Tableau1 extends Phaser.Scene{
         this.player1Speed = 0
         this.player2Speed = 0
 
-        this.joueurGauche = new Joueur('Sacha','joueurGauche')
-        this.joueurDroite = new Joueur('Pr.Chen','joueurDroite')
+        this.joueurGauche = new Joueur('Sacha', 'joueurGauche')
+        this.joueurDroite = new Joueur('Pr.Chen', 'joueurDroite')
         console.log(this.joueurGauche)
+
+
+        this.tweens.add({
+            targets: [this.balle],
+            rotation: 6,
+            ease: 'Repeat',
+            repeat: 1000000,
+            duration: 1000,
+        })
+
+
+        var particles = this.add.particles('smoke');
+
+        var emitter = particles.createEmitter({
+            speed: 100,
+            scale: {start: 0.1, end: 0},
+            blendMode: 'ADD'
+        });
+        emitter.startFollow(this.balle);
+
 
         this.balleAucentre();
         this.initKeyboard()

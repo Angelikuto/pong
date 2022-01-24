@@ -3,13 +3,14 @@ class Tableau1 extends Phaser.Scene{
 
 
     preload(){
-        this.load.image('blue','assets/sacha.jpg');
-        this.load.image('pink','assets/chen.jpg');
+        this.load.image('sacha','assets/sacha.png');
+        this.load.image('chen','assets/chen.png');
         this.load.image('circle','assets/pokeball.png');
-        //this.load.image('fond','assets/fond a.jpg');
-        for(let j=1;j<=49;j++) {
-            this.load.image('backg' + j, 'assets/fond/frame-' + j + '.jpg');
-        }
+        this.load.image('arene','assets/arene.png');
+
+        //for(let j=1;j<=49;j++) {
+        //    this.load.image('arene' + j, 'assets/fond/frame-' + j + '.jpg');
+        //}
     }
 
     getFrames(prefix,length){
@@ -24,13 +25,13 @@ class Tableau1 extends Phaser.Scene{
         //this.foond =this.add.image(500,250,'fond');
         //this.foond.setDisplaySize(1000,550)
 
-        this.foond = this.add.sprite(500, 250, 'backg').setOrigin(0,0);
-        this.anims.create({
-            key: 'backg',
-            frames: this.getFrames('backg',49),
-            frameRate: 32,
-            repeat: -1
-        });
+        this.arene = this.add.sprite(500, 250, 'arene').setOrigin(0,0);
+        //this.anims.create({
+        //    key: 'backg',
+        //    frames: this.getFrames('backg',49),
+        //    frameRate: 32,
+        //    repeat: -1
+        //});
 
         this.hauteur = 500
         this.largeur = 1000
@@ -46,19 +47,19 @@ class Tableau1 extends Phaser.Scene{
         this.balle.body.setBounce(1,1);
         this.balle.body.setAllowGravity(false)
 
-        this.haut = this.physics.add.sprite(0, 0, 'blue').setOrigin(0, 0)
+        this.haut = this.physics.add.sprite(0, 0, 'sacha').setOrigin(0, 0)
         this.haut.setDisplaySize(this.largeur, 20)
         this.haut.body.setAllowGravity(false)
         this.haut.setImmovable(true);
-        this.bas = this.physics.add.sprite(0, 480, 'pink').setOrigin(0, 0)
+        this.bas = this.physics.add.sprite(0, 480, 'chen').setOrigin(0, 0)
         this.bas.setDisplaySize(this.largeur, 20)
         this.bas.body.setAllowGravity(false)
         this.bas.setImmovable(true);
-        this.player1 = this.physics.add.sprite(50, 360, 'blue')
-        this.player1.setDisplaySize(20, 100)
+        this.player1 = this.physics.add.sprite(50, 360, 'sacha')
+        this.player1.setDisplaySize(50, 100)
         this.player1.body.setAllowGravity(false)
-        this.player2 = this.physics.add.sprite(920, 360, 'pink')
-        this.player2.setDisplaySize(20, 100)
+        this.player2 = this.physics.add.sprite(920, 360, 'chen')
+        this.player2.setDisplaySize(50, 100)
         this.player2.body.setAllowGravity(false)
         this.player1.setImmovable(true)
         this.player2.setImmovable(true)
